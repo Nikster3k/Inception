@@ -2,7 +2,7 @@ FROM debian:latest
 
 RUN apt-get update && apt-get upgrade && apt-get install -y systemctl nginx openssl
 
-COPY ./default /etc/nginx/sites-enabled/default
+# COPY ./default /etc/nginx/sites-enabled/default
 COPY ./default /etc/nginx/sites-available/default
 
 WORKDIR /etc/nginx/ssl

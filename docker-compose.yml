@@ -1,16 +1,22 @@
 services:
-  nginx:
-    build: srcs/nginx
-    container_name: nginx
-    ports:
-      - "443:443"
+  wordpress:
+    build: srcs/wordpress
+    container_name: wordpress
+    depends_on:
+      - mariadb
     volumes:
       - web-vol:/var/www/html
     networks:
       - wp-net
-  wordpress:
-    build: srcs/wordpress
-    container_name: wordpress
+    env_file:
+      - .env
+  nginx:
+    build: srcs/nginx
+    container_name: nginx
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
     volumes:
       - web-vol:/var/www/html
     networks:
