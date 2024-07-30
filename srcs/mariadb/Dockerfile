@@ -10,4 +10,6 @@ RUN chmod +x /docker-entrypoint-initdb.d/setup.sh
 
 EXPOSE 3306
 
+USER mysql
+
 CMD ["mysqld_safe"]

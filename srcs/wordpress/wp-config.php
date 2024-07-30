@@ -23,16 +23,16 @@
 print "NIKO IST DER COOLSTE!";
 $var = getenv('MYSQL_DATABASE');
 print $var;
-define( 'DB_NAME', $var );
+define( 'DB_NAME', 'wp_database' );
 /** Database username */
 $var = getenv('MYSQL_USERNAME');
 print $var;
-define( 'DB_USER', $var );
+define( 'DB_USER', 'nsassenb' );
 
 /** Database password */
 $var = getenv('MYSQL_PASSWORD');
 print $var;
-define( 'DB_PASSWORD', $var );
+define( 'DB_PASSWORD', 'test1234' );
 
 /** Database hostname */
 define( 'DB_HOST', 'mariadb' );
