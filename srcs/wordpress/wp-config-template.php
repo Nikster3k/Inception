@@ -20,19 +20,12 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-print "NIKO IST DER COOLSTE!";
-$var = getenv('MYSQL_DATABASE');
-print $var;
-define( 'DB_NAME', 'wp_database' );
+define( 'DB_NAME', '$MYSQL_DATABASE' );
 /** Database username */
-$var = getenv('MYSQL_USERNAME');
-print $var;
-define( 'DB_USER', 'nsassenb' );
+define( 'DB_USER', '$MYSQL_USERNAME' );
 
 /** Database password */
-$var = getenv('MYSQL_PASSWORD');
-print $var;
-define( 'DB_PASSWORD', 'test1234' );
+define( 'DB_PASSWORD', '$MYSQL_PASSWORD' );
 
 /** Database hostname */
 define( 'DB_HOST', 'mariadb' );

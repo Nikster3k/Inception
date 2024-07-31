@@ -34,4 +34,14 @@ networks:
   wp-net:
 volumes:
   web-vol:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/niko/data/web-vol
   db-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/niko/data/db-data

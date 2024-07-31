@@ -8,8 +8,9 @@ WORKDIR /var/www/html
 
 RUN wget https://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && rm latest.tar.gz
 
-COPY ./wp-config.php /var/www/html/wordpress/wp-config.php
+COPY ./wp-config-template.php /wp-config-template.php
+COPY ./setup.sh /setup.sh
 
 EXPOSE 9000
 
-CMD ["systemctl", "start", "php8.2-fpm"]
+CMD [ "bash", "/setup.sh", "/wp-config-template.php", "/var/www/html/wordpress/wp-config.php" ]
