@@ -1,10 +1,6 @@
 #!/bin/bash
 
-run_sql_commands() {
-while ! mysqladmin ping --silent; do
-    sleep 1
-done
-
+init(){
 mariadb -u root << EOF
 CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
 USE $MYSQL_DATABASE;
@@ -14,6 +10,9 @@ FLUSH PRIVILEGES;
 EOF
 }
 
-run_sql_commands &
-
-mysqld_safe
+if mysqladmin ping --silent; then
+    init
+    exit 0
+else
+    exit 1
+fi

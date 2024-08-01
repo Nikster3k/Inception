@@ -3,7 +3,8 @@ services:
     build: srcs/wordpress
     container_name: wordpress
     depends_on:
-      - mariadb
+      mariadb:
+          condition: service_healthy
     volumes:
       - web-vol:/var/www/html
     networks:
@@ -24,6 +25,12 @@ services:
   mariadb:
     build: srcs/mariadb
     container_name: mariadb
+    healthcheck:
+      test: ["CMD-SHELL", "/tools/check.sh"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     networks:
       - wp-net
     env_file:
