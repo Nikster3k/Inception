@@ -4,7 +4,7 @@ services:
     container_name: wordpress
     depends_on:
       mariadb:
-          condition: service_healthy
+        condition: service_healthy
     volumes:
       - web-vol:/var/www/html
     networks:
@@ -40,6 +40,24 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     restart: always
+  vsftpd:
+    build: requirements/bonus/vsftpd
+    container_name: vsftpd
+    ports:
+      - "20:20"
+      - "21:21"
+      - "10000-10100:10000-10100"
+    networks:
+      - inception-net
+    volumes:
+      - web-vol:/home/ftpsecure/
+    env_file:
+      - .env
+  adminer:
+    build: requirements/bonus/adminer
+    container_name: adminer
+    networks:
+      - inception-net
 networks:
   inception-net:
 volumes:
