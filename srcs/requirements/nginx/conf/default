@@ -2,7 +2,7 @@ server {
   # Example PHP Nginx FPM config file
   listen 443 ssl default_server;
   listen [::]:443 ssl default_server;
-  root /var/www/html/wordpress;
+  root /var/www/html;
 
   ssl_protocols TLSv1.3;
   ssl_certificate /etc/nginx/ssl/nginx.crt;

@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:11
 
 RUN apt-get update && apt-get upgrade && apt-get install -y systemctl mariadb-server
 COPY ./tools/check.sh /tools/check.sh

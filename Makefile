@@ -1,9 +1,12 @@
 up:
-	docker compose up -d
+	docker compose -f srcs/docker-compose.yml up -d
 
 upb:
-	docker compose build --no-cache
-	docker compose up -d
+	docker compose -f srcs/docker-compose.yml build --no-cache
+	docker compose -f srcs/docker-compose.yml up -d
 
 down:
-	docker compose down
+	docker compose -f srcs/docker-compose.yml down
+
+logs:
+	docker compose -f srcs/docker-compose.yml logs

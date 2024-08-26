@@ -1,6 +1,6 @@
 services:
   wordpress:
-    build: srcs/wordpress
+    build: requirements/wordpress
     container_name: wordpress
     depends_on:
       mariadb:
@@ -8,11 +8,12 @@ services:
     volumes:
       - web-vol:/var/www/html
     networks:
-      - wp-net
+      - inception-net
     env_file:
       - .env
+    restart: always
   nginx:
-    build: srcs/nginx
+    build: requirements/nginx
     container_name: nginx
     depends_on:
       - wordpress
@@ -21,20 +22,10 @@ services:
     volumes:
       - web-vol:/var/www/html
     networks:
-      - wp-net
-  vsftpd:
-    build: srcs/vsftpd
-    container_name: vsftpd
-    depends_on:
-      - wordpress
-    ports:
-      - "21:21"
-    volumes:
-      - web-vol:/var/www/html
-    networks:
-      - wp-net
+      - inception-net
+    restart: always
   mariadb:
-    build: srcs/mariadb
+    build: requirements/mariadb
     container_name: mariadb
     healthcheck:
       test: ["CMD-SHELL", "/tools/check.sh"]
@@ -43,13 +34,14 @@ services:
       retries: 5
       start_period: 10s
     networks:
-      - wp-net
+      - inception-net
     env_file:
       - .env
     volumes:
       - db-data:/var/lib/mysql
+    restart: always
 networks:
-  wp-net:
+  inception-net:
 volumes:
   web-vol:
     driver: local
