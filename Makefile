@@ -10,7 +10,3 @@ down:
 
 logs:
 	docker compose -f srcs/docker-compose.yml logs
-
-restart: down
-	docker rmi $(docker images -q) | true
-	make up

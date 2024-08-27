@@ -8,6 +8,7 @@ WORKDIR /var/www/html
 
 RUN wget https://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && mv wordpress/* ./ && rm -r wordpress && rm latest.tar.gz
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+# RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 RUN mkdir -p /run/php/
 

@@ -11,4 +11,13 @@ wp core install --url="$DOMAIN_NAME" --title="$WP_TITLE" --admin_user="$WP_ADMIN
 
 wp user create $WP_USER_NAME $WP_USER_MAIL --role="$WP_USER_ROLE" --user_pass="$WP_USER_PASSWORD" --allow-root
 
+wp plugin install redis-cache --activate --allow-root
+
+wp redis enable --allow-root
+
+wp config set WP_REDIS_HOST redis --allow-root
+wp config set WP_REDIS_PORT 6379 --allow-root
+wp config set WP_CACHE_KEY_S $WP_TITLE: --allow-root
+wp config set WP_REDIS_DATABASE 0 --allow-root
+
 exec systemctl start php7.4-fpm
