@@ -27,6 +27,10 @@ server {
     fastcgi_pass wordpress:9000;
   }
 
+  location /adminer {
+    proxy_pass http://adminer:8080;
+  }
+
   # deny access to Apache .htaccess on Nginx with PHP, 
   # if Apache and Nginx document roots concur
   location ~ /\.ht {

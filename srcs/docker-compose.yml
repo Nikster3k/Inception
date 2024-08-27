@@ -53,13 +53,19 @@ services:
       - web-vol:/home/ftpsecure/
     env_file:
       - .env
+    restart: always
   redis:
     build: requirements/bonus/redis
     container_name: redis
-    ports:
-      - "6379:6379"
     networks:
       - inception-net
+    restart: always
+  adminer:
+    build: requirements/bonus/adminer
+    container_name: adminer
+    networks:
+      - inception-net
+    restart: always
 networks:
   inception-net:
 volumes:

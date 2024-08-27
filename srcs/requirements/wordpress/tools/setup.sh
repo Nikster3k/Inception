@@ -13,11 +13,10 @@ wp user create $WP_USER_NAME $WP_USER_MAIL --role="$WP_USER_ROLE" --user_pass="$
 
 wp plugin install redis-cache --activate --allow-root
 
-wp redis enable --allow-root
-
 wp config set WP_REDIS_HOST redis --allow-root
 wp config set WP_REDIS_PORT 6379 --allow-root
-wp config set WP_CACHE_KEY_S $WP_TITLE: --allow-root
-wp config set WP_REDIS_DATABASE 0 --allow-root
+wp config set WP_CACHE true --allow-root
+
+wp redis enable --allow-root
 
 exec systemctl start php7.4-fpm
