@@ -19,4 +19,4 @@ wp config set WP_CACHE true --allow-root
 
 wp redis enable --allow-root
 
-exec systemctl start php7.4-fpm
+exec php-fpm7.4 -F

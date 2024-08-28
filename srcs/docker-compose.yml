@@ -66,6 +66,16 @@ services:
     networks:
       - inception-net
     restart: always
+  static-site:
+    build: requirements/bonus/static-site
+    container_name: static-site
+    ports:
+      - "80:80"
+    networks:
+      - inception-net
+    volumes:
+      - static-website:/var/www/html
+    restart: always
 networks:
   inception-net:
 volumes:
@@ -81,3 +91,9 @@ volumes:
       type: none
       o: bind
       device: /home/niko/data/db-data
+  static-website:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/niko/data/static-website
