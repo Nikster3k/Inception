@@ -1,6 +1,6 @@
 FROM debian:11
 
-RUN apt-get update && apt-get upgrade && apt-get install -y wget tar php-fpm php-mysql
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y wget tar php-fpm php-mysql
 
 COPY ./conf/php.conf /etc/php/7.4/fpm/pool.d/www.conf
 

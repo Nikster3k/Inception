@@ -1,6 +1,6 @@
 FROM debian:11
 
-RUN apt-get update && apt-get upgrade && apt-get install -y nginx openssl
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y nginx openssl
 
 COPY ./conf/default /etc/nginx/sites-available/default
 

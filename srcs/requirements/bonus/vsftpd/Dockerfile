@@ -1,6 +1,6 @@
 FROM debian:11
 
-RUN apt-get update && apt-get upgrade && apt-get install -y systemctl vsftpd 
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y systemctl vsftpd 
 
 COPY ./conf/ftp.conf /etc/vsftpd.conf
 COPY ./tools/setup.sh /tools/setup.sh

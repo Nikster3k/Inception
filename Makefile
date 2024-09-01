@@ -1,4 +1,9 @@
-up:
+VOLUMES = $(HOME)/data/web-vol $(HOME)/data/db-data $(HOME)/data/static-website
+
+$(VOLUMES):
+	mkdir -p $(VOLUMES)
+
+up: $(VOLUMES)
 	docker compose -f srcs/docker-compose.yml up -d
 
 upb:

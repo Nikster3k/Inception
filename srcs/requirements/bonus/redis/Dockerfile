@@ -1,6 +1,6 @@
 FROM debian:11
 
-RUN apt-get update && apt-get upgrade && apt-get install -y systemctl redis 
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y systemctl redis 
 
 COPY ./conf/redis.conf /etc/redis/redis.conf
 
