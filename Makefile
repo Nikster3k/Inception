@@ -1,4 +1,4 @@
-VOLUMES = $(HOME)/data/web-vol $(HOME)/data/db-data $(HOME)/data/static-website
+VOLUMES = $(HOME)/data/web-vol $(HOME)/data/db-data $(HOME)/data/static-website $(HOME)/data/owa-vol $(HOME)/data/owadb-data
 
 $(VOLUMES):
 	mkdir -p $(VOLUMES)

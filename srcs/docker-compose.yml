@@ -76,6 +76,35 @@ services:
     volumes:
       - static-website:/var/www/html
     restart: always
+  owa:
+    build: requirements/bonus/owa
+    container_name: owa
+    depends_on:
+      owadb:
+        condition: service_healthy
+    volumes:
+      - owa-vol:/var/www/owa
+    networks:
+      - inception-net
+    env_file:
+      - .env
+    restart: always
+  owadb:
+    build: requirements/bonus/owadb
+    container_name: owadb
+    volumes:
+      - owa-db:/var/lib/mysql
+    networks:
+      - inception-net
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "/tools/check.sh"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: always
 networks:
   inception-net:
 volumes:
@@ -85,6 +114,18 @@ volumes:
       type: none
       o: bind
       device: /home/niko/data/web-vol
+  owa-vol:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/niko/data/owa-vol
+  owa-db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/niko/data/owadb-data
   db-data:
     driver: local
     driver_opts:
